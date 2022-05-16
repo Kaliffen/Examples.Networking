@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+
+  server:
+    build: server/
+    command: server.exe
+    ports:
+      - 11000:11000
+
+  client:
+    build: client/
+    command: client.exe
+    network_mode: host
+    ports:
+      - 11000:11000
+
+    depends_on:
+      - server
